@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+
+<table class="table table-striped">
+  <tr>
+    <th>Дисциплина</th>
+    <th>Город</th>
+    <th>Дата начала</th>
+    <th>Дата окончания</th>
+    <th>Время начала</th>
+    <th>Преподаватель</th>
+    <th>Статус</th>
+    <th>Комментарий</th>
+  </tr>
+  {% for row in data %} {% if user.username == row.student.username %}
+  <tr>
+    <td>{{row.lesson.discipline}}</td>
+    <td>{{row.lesson.city}}</td>
+    <td>{{row.lesson.start_date}}</td>
+    <td>{{row.lesson.end_date}}</td>
+    <td>{{row.lesson.start_time}}</td>
+    <td>{{row.lesson.teacher}}</td>
+    <td>{{row.status}}</td>
+    <td>{{row.comment}}</td>
+  </tr>
+  {% endif %} {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>AlmaU</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="top-header">
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"><h6>{{user.first_name}} {{user.last_name}}</h6></a>
+    {% else %}
+        <a href="{% url 'login' %}"><h6>Авторизоваться</h6></a>
+    {% endif %}
+</div>
+
+<script>
+    let g = document.querySelector('.hamb');
+    g.onclick = function(){
+        const f = document.querySelector('#ulik');
+        if(f.style.visibility =="visible"){
+            f.style.visibility = "collapse";}
+        else f.style.visibility ="visible";}
+</script>
+
+<nav id="nav-container" class="main_header f-nav">
+    <div class="header_logo">
+    <a href="#"><img src="{% static 'img/logo_new.jpg' %}" alt=""/></a>
+    </div>
+
+    <ul id="ulik">
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li><a href="{% url 'lesson' %}">Занятия</a></li>
+        <li><a href="{% url 'coach' %}">Преподаватели</a></li>
+        <li><a href="{% url 'disciplines' %}">Дисциплины</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'mylessons' %}">Мои Занятия</a></li>
+            <li><a href="{% url 'requests' %}">Мои Заявки</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<main role="main" class="container">
+    <div class="mainblock">{% block content %}{% endblock %}</div>
+</main>
+
+<footer class="footer">
+    <div class="footer_container">
+        <h5>Как найти нас</h5>
+        <p>Розыбакиева 227 Алматы, 050060, Казахстан На карте Call Center: 8 (727) 313 30 40 E-mail: info@almau.edu.kz</p>
+    </div>
+
+    <div class="socials_container">
+        <img class="footer_logo" src="{% static 'img/footer_logo.png' %}" alt="" />
+        <ul class="socials">
+            <li>
+                <a href="https://www.facebook.com/almau.edu" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li>
+                <a href="https://vk.com/almau_edu" target="_blank"><i class="fab fa-vk"></i></a>
+            </li>
+            <li>
+                <a href="https://twitter.com/AlmaU_edu" target="_blank"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/almau_edu/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/user/MABchannelIAB" target="_blank"><i class="fab fa-youtube"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer_container">
+        <h5>Реквизиты</h5>
+        <p>Учреждение образования «Алматы Менеджмент Университет» КБЕ 18, КНП 861 БИН 971 240 001 583 ИИК KZ406017131000053681 АО «Народный Банк
+          Казахстана» БИК HSBKKZKX 050060 г.Алматы, ул.Розыбакиева,227</p>
+      </div>
+
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

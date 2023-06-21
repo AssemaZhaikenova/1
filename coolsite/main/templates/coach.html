@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content%}
+    {% for row in data %}
+
+        <div class="card card-body lessonblock" style="background-color: #eee; width: 385px; height: 200px;">
+            <p class="l-dis">{{row.name}}</p>
+            <h5>{{row.about}}</h5>
+        </div>
+
+    {% endfor %}
+{% endblock %}

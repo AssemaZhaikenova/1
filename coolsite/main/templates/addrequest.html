@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" action="{% url 'addrequest' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+    Выберите занятие: {{ form.lesson }}
+    <br>
+    {{ form.comment }}
+    <br>
+    <button type="submit" class="btn" style="background-color: #337ab7; color: white;">Подать заявку</button>
+</form>
+
+{% endblock %}

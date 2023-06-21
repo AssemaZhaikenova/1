@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="lesson_filters">
+        <form method="get">
+            <p class="filter_s" style="display: inline-block">{{ lesson_filter.form }}
+                <button type="submit" class="btn"
+                        style="background-color: #337ab7; color: white; width: 100px">Найти</button></p>
+        </form>
+    </div>
+
+    {% for row in data %}
+
+        <div class="container" style="width: 450px; display: inline-block">
+        <div class="row">
+            <div class="card card-body lessonblock" style="background-color: #eee; width: 385px; height: 425px;">
+            <p class="l-dis">{{row.discipline}}</p>
+            <p>{{row.teacher}}</p>
+            <p>Максимально мест: {{row.max_listeners}}</p>
+            <p>{{row.city}}</p>
+            <p>Дата начала: {{row.start_date}}</p>
+            <p >Дата окончания: {{row.end_date}}</p>
+            <p >Время начала: {{row.start_time}}</p>
+            <p >Группа: {{row.group}}</p>
+
+            <a href="{% url 'addrequest' row.id %}"><button type="submit" class="btn"
+                                                            style="background-color: #337ab7;
+                                                            color: white; margin-left: 200px;">Подать заявку</button></a>
+        </div>
+
+        </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

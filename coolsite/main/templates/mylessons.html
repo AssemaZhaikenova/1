@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content%}
+    <form method="get" action="/mylessons">
+        <select class="form-control form-control-inline" style="width: 300px; display: inline-block">
+            <option disabled selected value>-- Дисциплина --</option>
+            {% for row in data %}
+                <option>{{row.discipline}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn"
+                style="background-color: #337ab7; color: white; margin-left: 200px; margin-left: 20px">Применить</button>
+    </form>
+
+    {% for row in data %}
+        <div class="card card-body lessonblock" style="background-color: #eee; width: 385px; height: 350px; margin-top: 50px">
+            <p class="l-dis">{{row.discipline}}</p>
+            <p>{{row.teacher}}</p>
+            <p>Количество слушателей: {{row.listeners}}</p>
+            <p>{{row.city}}</p>
+            <p>Дата начала: {{row.start_date}}</p>
+            <p >Дата окончания: {{row.end_date}}</p>
+            <p >Время начала: {{row.start_time}}</p>
+            <p >Группа: {{row.group}}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="registration-cssave">
+  <form method="post">
+    <h1>{{title}}</h1>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Войти"></input>
+</form>
+</div>
+
+{% endblock %}
+
